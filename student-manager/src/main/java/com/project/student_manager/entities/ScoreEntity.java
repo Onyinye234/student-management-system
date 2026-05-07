@@ -1,4 +1,4 @@
-package entities;
+package com.project.student_manager.entities;
 
 import com.project.student_manager.enums.Grade;
 import com.project.student_manager.enums.Semester;

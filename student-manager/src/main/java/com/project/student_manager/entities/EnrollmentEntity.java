@@ -1,12 +1,10 @@
-package entities;
+package com.project.student_manager.entities;
 
 import com.project.student_manager.enums.Level;
-import com.project.student_manager.enums.Semester;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Locale;
 
 @Entity
 @Table(name ="enrollment")
