@@ -1,9 +1,12 @@
 package entities;
+import com.project.student_manager.enums.Level;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,14 +23,16 @@ public class StudentEntity {
     private String fullName;
     private String email;
     private String matricNumber;
-    private LocalDateTime enrolledAt;
+    private Level level;
+    private LocalDate enrolledAt;
 
-    @ManyToMany
-    @JoinTable(
+    @OneToMany(mappedBy = "student")
+    private List <EnrollmentEntity> enrollments;
 
-            name = "enrollment", joinColumns=@JoinColumn(name ="studentId"),
-            inverseJoinColumns = @JoinColumn(name ="courseId")
-    )
-    private List <CourseEntity> courseList;
+    @PrePersist
+    public void onCreate(){
+        this.enrolledAt = LocalDate.now();
+
+    }
 
 }

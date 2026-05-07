@@ -21,8 +21,8 @@ public class CourseEntity {
     private String courseCode;
     private String courseName;
     private String courseUnit;
-    @ManyToMany(mappedBy = "courseList")
-    private List<StudentEntity> studentList;
+    @OneToMany(mappedBy = "course")
+    private List<EnrollmentEntity> enrollments;
 
 
 }
