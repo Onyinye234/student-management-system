@@ -1,4 +1,5 @@
 package com.project.student_manager.entities;
+import com.project.student_manager.enums.Department;
 import com.project.student_manager.enums.Level;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ public class StudentEntity {
     private String fullName;
     private String email;
     private String matricNumber;
+    private Department department;
 
     @Enumerated(EnumType.STRING)
     private Level level;
@@ -39,11 +41,12 @@ public class StudentEntity {
 
     }
 
-    public StudentEntity(String fullName, String email, String matricNumber, Level level) {
+    public StudentEntity(String fullName, String email, String matricNumber, Level level, Department department) {
         this.fullName = fullName;
         this.email = email;
         this.matricNumber = matricNumber;
         this.level = level;
+        this.department = department;
     }
 
 }

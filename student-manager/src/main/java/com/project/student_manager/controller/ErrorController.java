@@ -28,10 +28,7 @@ public class ErrorController {
 
      return ResponseEntity.status(status).body(new CustomResponse(code,ex.getMessage(),null));
 
-
     }
-
-
 
     public HttpStatus getHttpStatus(StudentManagerException ex){
         return switch(ex.getErrorType()){
@@ -40,6 +37,7 @@ public class ErrorController {
 
         };
     }
+
 
     public String getResponseCode(StudentManagerException ex){
         return switch(ex.getErrorType()){

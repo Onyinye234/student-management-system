@@ -1,5 +1,6 @@
 package com.project.student_manager.request;
 
+import com.project.student_manager.enums.Department;
 import com.project.student_manager.enums.Level;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -24,6 +25,8 @@ public class StudentRegistrationRequest {
     private String matricNumber;
     @NotNull(message = "Level field cannot be null")
     private Level level;
+    @NotNull(message = "Department field cannot be null")
+    private Department department;
 
 
 }
