@@ -1,20 +1,18 @@
-package entities;
+package com.project.student_manager.entities;
 
 import com.project.student_manager.enums.Level;
-import com.project.student_manager.enums.Semester;
 import jakarta.persistence.*;
+import java.time.LocalDate;
 import lombok.*;
 
-import java.time.LocalDate;
-import java.util.Locale;
-
 @Entity
-@Table(name ="enrollment")
+@Table(name = "enrollment")
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
 public class EnrollmentEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long enrollmentId;
@@ -27,21 +25,14 @@ public class EnrollmentEntity {
     @JoinColumn(name = "courseId")
     private CourseEntity course;
 
-
-    @Column(nullable =false)
+    @Column(nullable = false)
     private LocalDate enrolledAt;
 
     @Column(nullable = false)
     private Level level;
 
-
-
     @PrePersist
-    public void onCreate(){
+    public void onCreate() {
         this.enrolledAt = LocalDate.now();
-
     }
-
-
-
 }
