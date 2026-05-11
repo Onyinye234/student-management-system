@@ -5,14 +5,11 @@ import com.project.student_manager.entities.CourseEntity;
 import com.project.student_manager.enums.ErrorType;
 import com.project.student_manager.exceptions.StudentManagerException;
 import com.project.student_manager.repositories.CourseEntityRepository;
-import com.project.student_manager.repositories.EnrollmentEntityRepository;
-import com.project.student_manager.repositories.ScoreEntityRepository;
 import com.project.student_manager.request.CourseRegisterationRequest;
 import com.project.student_manager.request.CourseUpdateRequest;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @AllArgsConstructor
 @Service

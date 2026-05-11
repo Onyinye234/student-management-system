@@ -16,34 +16,6 @@ public class ErrorController {
         MethodArgumentNotValidException ex
     ) {
         var fieldError = ex.getBindingResult().getFieldError();
-<<<<<<< HEAD
-        String message =(fieldError != null) ? fieldError.getDefaultMessage() : "Validation Error occurred";
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CustomResponse("08",message,null));
-
-    }
-    @ExceptionHandler({StudentManagerException.class})
-    public ResponseEntity<CustomResponse>handleStudentManagerException(StudentManagerException ex){
-
-     String code = getResponseCode(ex);
-     HttpStatus status = getHttpStatus(ex);
-
-     return ResponseEntity.status(status).body(new CustomResponse(code,ex.getMessage(),null));
-
-    }
-
-    public HttpStatus getHttpStatus(StudentManagerException ex){
-        return switch(ex.getErrorType()){
-            case STUDENT_ALREADY_REGISTERED,COURSE_ALREADY_REGISTERED -> HttpStatus.CONFLICT;
-            default->HttpStatus.INTERNAL_SERVER_ERROR;
-
-        };
-    }
-
-
-    public String getResponseCode(StudentManagerException ex){
-        return switch(ex.getErrorType()){
-
-=======
         String message = (fieldError != null)
             ? fieldError.getDefaultMessage()
             : "Validation Error occurred";
@@ -64,6 +36,8 @@ public class ErrorController {
         );
     }
 
+
+
     public HttpStatus getHttpStatus(StudentManagerException ex) {
         return switch (ex.getErrorType()) {
             case
@@ -73,9 +47,9 @@ public class ErrorController {
         };
     }
 
+
     public String getResponseCode(StudentManagerException ex) {
         return switch (ex.getErrorType()) {
->>>>>>> aa6c9dafc1ce6f65e33c3a0ef49a97922f6ac86e
             case STUDENT_ALREADY_REGISTERED -> "01";
             case COURSE_ALREADY_REGISTERED -> "02";
             default -> "05";

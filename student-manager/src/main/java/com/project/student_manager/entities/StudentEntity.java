@@ -1,9 +1,5 @@
 package com.project.student_manager.entities;
-<<<<<<< HEAD
 import com.project.student_manager.enums.Department;
-=======
-
->>>>>>> aa6c9dafc1ce6f65e33c3a0ef49a97922f6ac86e
 import com.project.student_manager.enums.Level;
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -43,16 +39,12 @@ public class StudentEntity {
         this.enrolledAt = LocalDate.now();
     }
 
-<<<<<<< HEAD
-    public StudentEntity(String fullName, String email, String matricNumber, Level level, Department department) {
-=======
     public StudentEntity(
         String fullName,
         String email,
         String matricNumber,
         Level level
     ) {
->>>>>>> aa6c9dafc1ce6f65e33c3a0ef49a97922f6ac86e
         this.fullName = fullName;
         this.email = email;
         this.matricNumber = matricNumber;

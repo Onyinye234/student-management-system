@@ -1,6 +1,5 @@
 package com.project.student_manager.controller;
 
-import com.project.student_manager.dto.StudentDto;
 import com.project.student_manager.enums.Department;
 import com.project.student_manager.enums.Level;
 import com.project.student_manager.request.StudentRegistrationRequest;
@@ -11,19 +10,11 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 @Validated
-=======
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
->>>>>>> aa6c9dafc1ce6f65e33c3a0ef49a97922f6ac86e
 @AllArgsConstructor
 @RestController
 @RequestMapping({ "api/v1/student" })
@@ -42,6 +33,7 @@ public class StudentController {
                 studentService.enrollStudent(studentRegistrationRequest)
             )
         );
+
     }
 
 
