@@ -75,6 +75,8 @@ public class StudentService {
 
         }
         if(Objects.nonNull(updateStudentDetailsRequest.getLevel())){
+            studentEntity.setLevel(updateStudentDetailsRequest.getLevel());
+
             studentEntityRepository.save(studentEntity);
 
         }
