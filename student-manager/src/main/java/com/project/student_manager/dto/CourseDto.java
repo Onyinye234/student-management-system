@@ -1,6 +1,7 @@
 package com.project.student_manager.dto;
 
 import com.project.student_manager.enums.Level;
+import com.project.student_manager.enums.Semester;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,6 @@ public class CourseDto {
     private String courseCode;
     private String courseName;
     private String courseUnit;
-    private String semester;
+    private Semester semester;
     private Level level;
 }

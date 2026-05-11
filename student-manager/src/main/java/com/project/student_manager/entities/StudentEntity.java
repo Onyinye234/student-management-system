@@ -1,13 +1,13 @@
 package com.project.student_manager.entities;
+
 import com.project.student_manager.enums.Level;
 import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Setter
@@ -16,9 +16,11 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "student")
 public class StudentEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studentId;
+
     private String fullName;
     private String email;
     private String matricNumber;
@@ -29,21 +31,22 @@ public class StudentEntity {
     private LocalDate enrolledAt;
 
     @OneToMany(mappedBy = "student")
-    private List <EnrollmentEntity> enrollments;
+    private List<EnrollmentEntity> enrollments;
 
     @PrePersist
-    public void onCreate(){
+    public void onCreate() {
         this.enrolledAt = LocalDate.now();
-
-
-
     }
 
-    public StudentEntity(String fullName, String email, String matricNumber, Level level) {
+    public StudentEntity(
+        String fullName,
+        String email,
+        String matricNumber,
+        Level level
+    ) {
         this.fullName = fullName;
         this.email = email;
         this.matricNumber = matricNumber;
         this.level = level;
     }
-
 }
