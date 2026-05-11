@@ -7,5 +7,4 @@ public enum Level {
     LEVEL_400,
     LEVEL_500,
     LEVEL_600,
-
 }
