@@ -29,30 +29,30 @@ public class CourseController {
         );
     }
 
-    // @PatchMapping("/{id}")
-    // public ResponseEntity<CustomResponse> updateCourse(
-    //     @PathVariable Long id,
-    //     @RequestBody CourseUpdateRequest coursePatchRequest
-    // ) {
-    //     return ResponseEntity.ok(
-    //         new CustomResponse(
-    //             "200",
-    //             "Successful",
-    //             courseService.updateCourse(id, coursePatchRequest)
-    //         )
-    //     );
-    // }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<CustomResponse> deleteCourse(@PathVariable Long id) {
+    @PatchMapping("/{id}")
+    public ResponseEntity<CustomResponse> updateCourse(
+        @PathVariable Long id,
+        @RequestBody CourseUpdateRequest coursePatchRequest
+    ) {
         return ResponseEntity.ok(
             new CustomResponse(
                 "200",
                 "Successful",
-                courseService.deleteCourse(id)
+                courseService.updateCourse(id, coursePatchRequest)
             )
         );
     }
+
+    // @DeleteMapping("/{id}")
+    // public ResponseEntity<CustomResponse> deleteCourse(@PathVariable Long id) {
+    //     return ResponseEntity.ok(
+    //         new CustomResponse(
+    //             "200",
+    //             "Successful",
+    //             courseService.deleteCourse(id)
+    //         )
+    //     );
+    // }
 
     @GetMapping("/{id}")
     public ResponseEntity<CustomResponse> getCourseById(@PathVariable Long id) {

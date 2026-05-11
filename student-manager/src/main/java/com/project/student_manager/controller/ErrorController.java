@@ -36,6 +36,8 @@ public class ErrorController {
         );
     }
 
+
+
     public HttpStatus getHttpStatus(StudentManagerException ex) {
         return switch (ex.getErrorType()) {
             case
@@ -44,6 +46,7 @@ public class ErrorController {
             default -> HttpStatus.INTERNAL_SERVER_ERROR;
         };
     }
+
 
     public String getResponseCode(StudentManagerException ex) {
         return switch (ex.getErrorType()) {

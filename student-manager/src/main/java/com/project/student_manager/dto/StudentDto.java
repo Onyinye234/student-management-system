@@ -1,5 +1,6 @@
 package com.project.student_manager.dto;
 
+import com.project.student_manager.enums.Department;
 import com.project.student_manager.enums.Level;
 import lombok.*;
 
@@ -15,5 +16,6 @@ public class StudentDto {
     private String matricNumber;
     private Level level;
     private LocalDate enrolledAt;
+    private Department department;
 
 }

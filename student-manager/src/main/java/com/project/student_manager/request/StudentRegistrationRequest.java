@@ -1,5 +1,6 @@
 package com.project.student_manager.request;
 
+import com.project.student_manager.enums.Department;
 import com.project.student_manager.enums.Level;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -20,11 +21,13 @@ public class StudentRegistrationRequest {
     @NotNull(message = "Email field cannot be empty")
     @Email(message = "Invalid email")
     private String email;
-
     @NotNull(message = "Matric Number field cannot be empty")
     @Pattern(regexp = "^\\d{2}/\\d{4}$", message = "Invalid pattern")
     private String matricNumber;
 
+
     @NotNull(message = "Level field cannot be null")
     private Level level;
+
+
 }
