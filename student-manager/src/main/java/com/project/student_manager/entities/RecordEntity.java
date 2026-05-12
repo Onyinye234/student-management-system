@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "score")
+@Table(name = "record")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScoreEntity {
+public class RecordEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long scoreId;
@@ -32,14 +32,9 @@ public class ScoreEntity {
     @Column
     private Float total;
 
-    @Column
+    @Enumerated(EnumType.STRING)
     private Grade grade;
 
-    @Column(nullable = false)
-    private String academicYear;
-
-    @Column(nullable = false)
-    private Semester semester;
 
 
 }

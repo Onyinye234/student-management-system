@@ -1,7 +1,10 @@
 package com.project.student_manager.request;
 
+import com.project.student_manager.enums.Department;
 import com.project.student_manager.enums.Level;
 import com.project.student_manager.enums.Semester;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -27,4 +30,8 @@ public class CourseRegisterationRequest {
 
     @NotNull(message = "Level is required")
     private Level level;
+
+    @NotNull(message = "Department is required")
+    private Department department;
+
 }

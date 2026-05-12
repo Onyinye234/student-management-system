@@ -22,12 +22,19 @@ public class StudentEntity {
     private Long studentId;
 
     private String fullName;
+
+
     private String email;
+
+
     private String matricNumber;
-    private Department department;
 
     @Enumerated(EnumType.STRING)
     private Level level;
+
+
+    @Enumerated(EnumType.STRING)
+    private Department department;
 
     private LocalDate enrolledAt;
 
@@ -39,16 +46,5 @@ public class StudentEntity {
         this.enrolledAt = LocalDate.now();
     }
 
-    public StudentEntity(
-        String fullName,
-        String email,
-        String matricNumber,
-        Level level
-    ) {
-        this.fullName = fullName;
-        this.email = email;
-        this.matricNumber = matricNumber;
-        this.level = level;
-        this.department = department;
-    }
+
 }
