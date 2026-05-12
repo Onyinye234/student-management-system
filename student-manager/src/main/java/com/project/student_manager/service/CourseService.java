@@ -70,6 +70,7 @@ public class CourseService {
         courseEntity.setCourseUnit(req.getCourseUnit());
         courseEntity.setSemester(req.getSemester());
         courseEntity.setLevel(req.getLevel());
+        courseEntity.setDepartment(req.getDepartment());
 
         courseEntityRepository.save(courseEntity);
 
@@ -85,7 +86,7 @@ public class CourseService {
             courseEntityRepository
                 .findByCourseCode(req.getCourseCode())
                 .ifPresent(existingCourse -> {
-                    if (!existingCourse.getId().equals(id)) {
+                    if (!existingCourse.getCourseId().equals(id)) {
                         throw new StudentManagerException(
                             ErrorType.COURSE_ALREADY_REGISTERED,
                             "This course has already been registered"
@@ -102,7 +103,7 @@ public class CourseService {
             courseEntityRepository
                 .findByCourseName(req.getCourseName())
                 .ifPresent(existingCourse -> {
-                    if (!existingCourse.getId().equals(id)) {
+                    if (!existingCourse.getCourseId().equals(id)) {
                         throw new StudentManagerException(
                             ErrorType.COURSE_ALREADY_REGISTERED,
                             "This course has already been registered"
@@ -122,6 +123,10 @@ public class CourseService {
 
         if (req.getLevel() != null) {
             courseEntity.setLevel(req.getLevel());
+        }
+
+        if (req.getDepartment() != null) {
+            courseEntity.setDepartment(req.getDepartment());
         }
 
         courseEntityRepository.save(courseEntity);

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping({ "api/v1/student" })
+@RequestMapping({ "api/v1/students" })
 public class StudentController {
 
     private final StudentService studentService;
@@ -40,7 +40,7 @@ public class StudentController {
     @GetMapping("/{studentId}")
     public ResponseEntity<CustomResponse> getStudent(@PathVariable @NotNull(message = "ID field cannot be left empty") @Positive(message = "ID must be a positive value") Long studentId){
         return ResponseEntity.ok(
-                new CustomResponse("00", "Successful", studentService.getStudentById(studentId)));
+                new CustomResponse("00", "Successful", studentService.getStudentAndMapToDto(studentId)));
     }
 
     @PatchMapping("/{studentId}")
