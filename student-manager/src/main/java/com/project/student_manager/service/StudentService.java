@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -22,6 +23,12 @@ import java.util.Objects;
 public class StudentService {
 
     private final StudentEntityRepository studentEntityRepository;
+
+    public StudentEntity getStudentById(Long studentId){
+        return studentEntityRepository.findById(studentId)
+                .orElseThrow(()->   new StudentManagerException(ErrorType.STUDENT_NOT_FOUND, "Student with this ID doesn't exist"));
+
+    }
 
     public StudentDto mapEntityToDto(StudentEntity studentEntity) {
         return new StudentDto(
@@ -61,12 +68,12 @@ public class StudentService {
             );
         }
 
-        StudentEntity studentEntity = new StudentEntity(
-            studentRegistrationRequest.getFullName(),
-            studentRegistrationRequest.getEmail(),
-            studentRegistrationRequest.getMatricNumber(),
-            studentRegistrationRequest.getLevel()
-        );
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setFullName(studentRegistrationRequest.getFullName());
+        studentEntity.setEmail(studentRegistrationRequest.getEmail());
+        studentEntity.setMatricNumber(studentRegistrationRequest.getMatricNumber());
+        studentEntity.setLevel(studentRegistrationRequest.getLevel());
+        studentEntity.setDepartment(studentRegistrationRequest.getDepartment());
         studentEntityRepository.save(studentEntity);
         return mapEntityToDto(studentEntity);
 
@@ -74,10 +81,9 @@ public class StudentService {
 
     }
 
-    public StudentDto getStudentById(Long studentId){
-        StudentEntity studentEntity = studentEntityRepository.findById(studentId)
-                .orElseThrow(()->   new StudentManagerException(ErrorType.STUDENT_NOT_FOUND, "Student with this ID doesn't exist"));
+    public StudentDto getStudentAndMapToDto(Long studentId){
 
+        StudentEntity studentEntity = getStudentById(studentId);
         return mapEntityToDto(studentEntity);
     }
 
@@ -102,29 +108,31 @@ public class StudentService {
             studentEntityRepository.save(studentEntity);
 
         }
+        if(Objects.nonNull(updateStudentDetailsRequest.getDepartment())){
+            studentEntity.setDepartment(updateStudentDetailsRequest.getDepartment());
+            studentEntityRepository.save(studentEntity);
+
+        }
+
         return mapEntityToDto(studentEntity);
 
 
     }
 
-    public Page<StudentDto>findAllStudents(Department department, Level level,int size, int page){
-        Page<StudentEntity>students;
-        Pageable pageable = PageRequest.of(page,size);
-         if(department != null && level!= null){
-            students = studentEntityRepository.findByLevelAndDepartment(pageable,level,department);
-        }
-        else if(level!= null){
+    public Page<StudentDto>findAllStudents(Department department, Level level,int size, int page) {
+        Page<StudentEntity> students;
+        Pageable pageable = PageRequest.of(page, size, Sort.by("fullName").ascending());
+        if (department != null && level != null) {
+            students = studentEntityRepository.findByLevelAndDepartment(pageable, level, department);
+        } else if (level != null) {
             students = studentEntityRepository.findByLevel(pageable, level);
-        }
-        else if(department!= null){
+        } else if (department != null) {
             students = studentEntityRepository.findByDepartment(pageable, department);
-        }
-
-        else{
+        } else {
             students = studentEntityRepository.findAll(pageable);
         }
 
-       return students.map(this::mapEntityToDto);
+        return students.map(this::mapEntityToDto);
 
 
     }
