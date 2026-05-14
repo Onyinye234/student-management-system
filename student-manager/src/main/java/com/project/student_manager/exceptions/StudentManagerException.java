@@ -7,6 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class StudentManagerException extends RuntimeException {
-  private ErrorType errorType;
-  private String message;
+    private ErrorType errorType;
+    private String message;
 }

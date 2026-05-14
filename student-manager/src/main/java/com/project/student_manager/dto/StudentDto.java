@@ -2,9 +2,9 @@ package com.project.student_manager.dto;
 
 import com.project.student_manager.enums.Department;
 import com.project.student_manager.enums.Level;
+import java.time.LocalDate;
 import lombok.*;
 
-import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,5 +17,4 @@ public class StudentDto {
     private Level level;
     private LocalDate enrolledAt;
     private Department department;
-
 }

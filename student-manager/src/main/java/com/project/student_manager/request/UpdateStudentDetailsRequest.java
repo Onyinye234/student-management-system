@@ -10,11 +10,10 @@ import lombok.Data;
 @AllArgsConstructor
 public class UpdateStudentDetailsRequest {
     private String fullName;
-    @Email(message="Invalid email")
+
+    @Email(message = "Invalid email")
     private String email;
+
     private Level level;
     private Department department;
-
-
-
 }

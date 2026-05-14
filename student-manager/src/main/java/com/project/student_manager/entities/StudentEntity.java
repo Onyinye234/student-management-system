@@ -1,4 +1,5 @@
 package com.project.student_manager.entities;
+
 import com.project.student_manager.enums.Department;
 import com.project.student_manager.enums.Level;
 import jakarta.persistence.*;
@@ -23,15 +24,12 @@ public class StudentEntity {
 
     private String fullName;
 
-
     private String email;
-
 
     private String matricNumber;
 
     @Enumerated(EnumType.STRING)
     private Level level;
-
 
     @Enumerated(EnumType.STRING)
     private Department department;
@@ -45,6 +43,4 @@ public class StudentEntity {
     public void onCreate() {
         this.enrolledAt = LocalDate.now();
     }
-
-
 }

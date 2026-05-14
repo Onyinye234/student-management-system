@@ -1,6 +1,5 @@
 package com.project.student_manager.entities;
 
-import com.project.student_manager.enums.Department;
 import com.project.student_manager.enums.Level;
 import com.project.student_manager.enums.Semester;
 import jakarta.persistence.*;
@@ -41,18 +40,16 @@ public class EnrollmentEntity {
     @Column(nullable = false)
     private String academicYear;
 
-
-
     @PrePersist
     public void onCreate() {
         this.enrolledAt = LocalDate.now();
         LocalDate now = LocalDate.now();
         int year = now.getYear();
         int month = now.getMonthValue();
-        if(month >= 9){
-            this.academicYear = year +"/" +(year+1);
-        }else{
-            this.academicYear = (year-1) +"/"+ year;
+        if (month >= 9) {
+            this.academicYear = year + "/" + (year + 1);
+        } else {
+            this.academicYear = (year - 1) + "/" + year;
         }
     }
 }
