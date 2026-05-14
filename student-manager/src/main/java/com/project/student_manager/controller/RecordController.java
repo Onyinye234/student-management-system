@@ -19,21 +19,17 @@ public class RecordController {
     private final RecordService recordService;
 
     @PatchMapping("{studentId}/{courseId}")
-    public ResponseEntity<CustomResponse> setScores(@PathVariable(required = true)
-                                                        @NotNull(message = "Student ID cannot be left blank ")
-                                                        @Positive(message = "ID must be positive ")Long studentId,
-                                                    @PathVariable(required = true)
-                                                         @NotNull(message = "Course ID cannot be left blank ")
-                                                          @Positive(message = "ID must be positive value") Long courseId,
-                                                    @Valid @RequestBody UpdateScoreRequest updateScoreRequest) {
+    public ResponseEntity<CustomResponse> setScores(
+            @PathVariable(required = true)
+                    @NotNull(message = "Student ID cannot be left blank ")
+                    @Positive(message = "ID must be positive ")
+                    Long studentId,
+            @PathVariable(required = true)
+                    @NotNull(message = "Course ID cannot be left blank ")
+                    @Positive(message = "ID must be positive value")
+                    Long courseId,
+            @Valid @RequestBody UpdateScoreRequest updateScoreRequest) {
         recordService.UpdateScore(studentId, courseId, updateScoreRequest);
-        return ResponseEntity.ok(
-                new CustomResponse("00","Successfully updated", null)
-        );
+        return ResponseEntity.ok(new CustomResponse("00", "Successfully updated", null));
     }
-
-
-
-
-
 }

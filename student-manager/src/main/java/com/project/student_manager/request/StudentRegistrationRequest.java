@@ -21,13 +21,14 @@ public class StudentRegistrationRequest {
     @NotNull(message = "Email field cannot be empty")
     @Email(message = "Invalid email")
     private String email;
+
     @NotNull(message = "Matric Number field cannot be empty")
     @Pattern(regexp = "^\\d{2}/\\d{4}$", message = "Invalid pattern")
     private String matricNumber;
+
     @NotNull(message = "Department field cannot be null")
     private Department department;
+
     @NotNull(message = "Level field cannot be null")
     private Level level;
-
-
 }

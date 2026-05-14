@@ -1,10 +1,7 @@
 package com.project.student_manager.request;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
